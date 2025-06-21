@@ -1,6 +1,6 @@
 # nix4loong-website
 
-Repository of nix4loong project's official website.
+Official repository for the nix4loong project website.
 
 ## Quick Start
 
