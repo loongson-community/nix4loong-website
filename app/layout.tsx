@@ -44,6 +44,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           navbar={NAVBAR}
           editLink={null}
           feedback={{ content: null }}
+          search={null}
           lastUpdated={(
             <LastUpdated>
               最近更新于
@@ -53,11 +54,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             title: '目录',
             backToTop: '回到顶部',
           }}
-          search={(
-            <Search
-              placeholder="搜索文档..."
-            />
-          )}
           themeSwitch={{
             dark: '黑暗模式',
             light: '明亮模式',
