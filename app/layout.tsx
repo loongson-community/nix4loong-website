@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Script from 'next/script'
 import { LastUpdated, Layout, Navbar } from 'nextra-theme-docs'
-import { Head, Search } from 'nextra/components'
+import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import icon from './icon.svg'
 import './globals.css'
