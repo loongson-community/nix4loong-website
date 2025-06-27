@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Script from 'next/script'
-import { LastUpdated, Layout, Navbar } from 'nextra-theme-docs'
+import { Footer, LastUpdated, Layout, Navbar } from 'nextra-theme-docs'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import icon from './icon.svg'
@@ -18,6 +18,35 @@ const NAVBAR = (
       </div>
     )}
   />
+)
+
+const FOOTER = (
+  <Footer>
+    <div className="text-sm flex gap-4 w-full justify-between">
+      <a
+        target="_blank"
+        className="hover:underline underline-offset-4 decoration-dotted"
+        href="https://beian.miit.gov.cn/"
+        rel="noopener noreferrer"
+      >
+        鄂 ICP 备 2022017735 号-11
+      </a>
+      <div>
+        <a
+          target="_blank"
+          className="hover:underline underline-offset-4 decoration-dotted"
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          rel="noopener noreferrer"
+        >
+          CC BY-NC-SA 4.0
+        </a>
+        {' '}
+        2025
+        {' '}
+        © Nix4Loong
+      </div>
+    </div>
+  </Footer>
 )
 
 interface RootLayoutProps {
@@ -42,6 +71,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <Layout
           pageMap={await getPageMap()}
           navbar={NAVBAR}
+          footer={FOOTER}
           editLink={null}
           feedback={{ content: null }}
           search={null}
