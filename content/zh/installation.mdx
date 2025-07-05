@@ -1,0 +1,81 @@
+import { Cards } from 'nextra/components'
+import { DownloadIcon } from '../../app/_components/download-icon'
+import { HashIcon } from '../../app/_components/hash-icon'
+
+# 安装指南
+
+## 设备要求
+
+目前，Nix4Loong 要求您的龙芯处理器*至少*需要满足 [Toolchain Conventions of the LoongArch™ Architecture](https://github.com/loongson/la-toolchain-conventions) 中规定的 `-march=la64v1.0` 特性，它们*至少*包含下列特征：
+
+- 基于 64 位的 LoongArch 架构
+- 拥有 64 位的基本浮点运算单元，即 `fpu64`
+- 支持龙芯向量扩展指令集，即 `lsx`
+
+一些常见的满足上述要求的处理器包括但不限于：3A5000、3C5000 系列、3A6000、3B6000 系列、3C6000 系列、2K3000 等。一些常见的*不满足*上述要求的处理器包括但不限于：2K0300，以及 3A4000 等基于 MIPS 架构的龙芯处理器。
+
+## Nix
+
+Nix 包管理器可运行在主流的龙架构 Linux 发行版上，包括 AOSC OS 和 Arch Linux for Loong64 等。如果您选择安装 Nix，我们要求您的系统运行在[新世界的龙架构](https://areweloongyet.com/docs/old-and-new-worlds/)上。
+
+我们推荐您使用 Nix4Loong 项目基于 [NixOS/experimental-nix-installer](https://github.com/NixOS/experimental-nix-installer/) 修改的 Nix 安装程序，它能够自动配置 Nix 使用本项目提供的[二进制缓存](./usage)，不需要在本地环境构建软件包。您可以使用以下脚本自动下载和运行 Nix 安装程序，此脚本能够对系统环境进行必要的检查。
+
+```bash copy
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.nix4loong.cn | sh -s -- install
+```
+
+或者，您也可选择手动下载 Nix 安装程序：
+
+```bash copy
+curl -sL -o nix-installer https://download.nix4loong.cn/nix-installer/latest/nix-installer-loongarch64-linux
+chmod +x nix-installer
+./nix-installer install
+```
+
+您可参阅 Nix4Loong 的 [Github 仓库](https://github.com/darkyzhou/experimental-nix-installer/) 与 [NixOS/experimental-nix-installer 仓库](https://github.com/NixOS/experimental-nix-installer/) 获取更多使用帮助和其它信息。
+
+## NixOS
+
+NixOS 是一个基于 Nix 包管理器构建的 Linux 发行版。与传统的 Linux 发行版不同，NixOS 不仅预装了 Nix，整个系统配置，从内核参数、系统服务到用户环境，均可通过 Nix 的声明式配置进行管理。如果您选择安装 NixOS，我们额外要求您的系统兼容[新世界的龙架构](https://areweloongyet.com/docs/old-and-new-worlds/)，并且以 UEFI 模式启动。近一年发售的多数龙芯设备均满足此要求，包括常见的 XA61201 主板等。我们提供了两种安装镜像：
+
+### 图形化安装镜像
+
+图形化安装镜像内置各种桌面应用程序，包括图形化的 NixOS 安装程序，您还能在启动时选择不同的桌面环境（Desktop Environment）。它同时也是 Live CD，可用于体验 NixOS 和 Nix 包管理器。
+
+<Cards>
+  <Cards.Card
+    icon={<DownloadIcon />}
+    title="获取图形化安装镜像"
+    href="https://download.nix4loong.cn/nixos-images/loong-master/latest-nixos-graphical-loongarch64-linux.iso"
+    className="mt-2"
+  />
+  <Cards.Card
+    icon={<HashIcon />}
+    title="获取 SHA-256"
+    href="https://download.nix4loong.cn/nixos-images/loong-master/latest-nixos-graphical-loongarch64-linux.iso.sha256"
+    className="mt-2"
+  />
+</Cards>
+
+### 最小化安装镜像
+
+最小化安装镜像不内置图形界面，拥有小得多的体积，但需要通过命令行进行系统安装的相关工作，参见 [NixOS Installation Guide](https://nixos.wiki/wiki/NixOS_Installation_Guide)。
+
+<Cards>
+  <Cards.Card
+    icon={<DownloadIcon />}
+    title="获取最小化安装镜像"
+    href="https://download.nix4loong.cn/nixos-images/loong-master/latest-nixos-minimal-loongarch64-linux.iso"
+    className="mt-2"
+  />
+  <Cards.Card
+    icon={<HashIcon />}
+    title="获取 SHA-256"
+    href="https://download.nix4loong.cn/nixos-images/loong-master/latest-nixos-graphical-loongarch64-linux.iso.sha256"
+    className="mt-2"
+  />
+</Cards>
+
+## 反馈与建议
+
+如果您在安装过程中遇到任何问题，或对 Nix4Loong 有任何建议，欢迎阅读[贡献指南](./contributing)。

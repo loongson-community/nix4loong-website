@@ -1,0 +1,17 @@
+# 贡献指南
+
+目前，Nix4Loong 在 [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs) 仓库维护 `loong-master` 分支，该分支基于官方 Nixpkgs 仓库的 `master` 分支。之所以采用此方式，是因为存在部分暂时无法上游合并的修改，而所有可上游合并的更改我们都会积极推动至上游。
+
+## 使用反馈
+
+由于人力有限，目前 Nixpkgs 中许多能够在龙架构上运行的包尚未经过充分测试，实际使用过程中可能会遇到各种问题。如果您在使用过程中发现问题，欢迎向我们反馈。请前往 Nix4Loong 仓库[创建 Issue](https://github.com/loongson-community/nixpkgs/issues)。此外，若您发现无法正常构建的软件包，也可通过 Issue 提交反馈。
+
+## 参与工作
+
+当前，仍有大量 Nixpkgs 包无法在龙架构上顺利构建或运行，且部分包的构建过程仍需特殊修复。这些修复多为临时性措施，尚未从根本上解决问题。如果您有意参与我们的工作，欢迎 fork [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs) 仓库的 `loong-master` 分支，并在完成修改和测试后提交 PR。我们将在相关审查通过后，推动您的贡献合并至上游 [NixOS/nixpkgs](https://github.com/nixos/nixpkgs/)。此外，您也可以参与解决 [Nix4Loong 现有的 Issue](https://github.com/loongson-community/nixpkgs/issues)，以及 [loongson-community/discussions](https://github.com/loongson-community/discussions/issues) 中针对龙架构软件生态的问题报告。
+
+## 贡献资源
+
+Nix4Loong 现有的龙芯设备资源难以完全满足 Nixpkgs 频繁变更所带来的构建需求。如果您拥有可用的龙芯设备，并愿意为社区提供算力支持，欢迎通过[创建 Issue](https://github.com/loongson-community/nixpkgs/issues)与我们联系。
+
+同时，Nix4Loong 目前仅由 [NJU Mirror](https://mirrors.nju.edu.cn/nix4loong/) 提供镜像服务，难以充分覆盖世界各地的用户，如果您拥有镜像资源并愿意提供支持，我们也欢迎您通过 Issue 联系我们。

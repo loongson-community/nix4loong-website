@@ -1,0 +1,26 @@
+import { Callout } from 'nextra/components'
+
+# 使用指南
+
+## 二进制缓存
+
+在 Nix 生态中，**二进制缓存（binary cache）** 是一种用于存储和分发已构建软件包的服务。Nix 在安装或升级软件包时，会优先尝试从二进制缓存中下载已构建好的包，而不是在本地重新编译，这样可以大幅提升安装速度、节省本地算力和时间。每个二进制缓存都通过公钥进行签名校验，确保下载内容的安全性和完整性。
+
+由于 Nix 官方的构建服务（如 cache.nixos.org）目前仅支持 x86_64 和 aarch64 架构，尚未覆盖龙架构，因此我们为龙架构用户自建了专用的构建服务和二进制缓存，提供 Nix 安装程序、Nixpkgs 软件包、NixOS 安装镜像等预构建二进制。当前，我们的二进制缓存源站托管在 [NJU Mirror](https://mirrors.nju.edu.cn/nix4loong/)。
+
+Nix4Loong 的二进制缓存的 URL 为 `https://cache.nix4loong.cn`，公钥为 `cache.nix4loong.cn-1:zmkwLihdSUyy6OFSVgvK3br0EaUEczLiJgDfvOmm3pA=`。未来如有更多国内外镜像站支持，我们将配置自动跳转，确保用户访问该 URL 时能够优先连接到地理位置最近的镜像源。如果您对贡献镜像站感兴趣，欢迎阅读[贡献指南](./contributing)。
+
+<Callout type="info">
+如果您使用我们提供的 Nix 安装程序或 NixOS 镜像，**它们将会自动使用上述二进制缓存，不需要额外配置**。Nix 在安装软件包时，会优先从二进制缓存中下载已构建好的软件包，以提升安装效率。
+</Callout>
+
+## Flakes 与 Nix Channels
+
+由于 [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs) 的 `loong-master` 分支中许多关键的修改尚未上游化，包括为 Flakes 的 system 引入 `loongarch64-linux` 支持等，我们推荐您：
+
+- 在使用 Flakes 时将 Nixpkgs 指向 `github:loongson-community/nixpkgs`。
+- 在使用 Nix Channels 时指向 `https://download.nix4loong.cn/nix-channels/loong-master`。
+
+<Callout type="info">
+类似地，如果您使用我们提供的 Nix 安装程序或 NixOS 镜像，它们提供的 Nix 已被配置默认使用上述链接。
+</Callout>

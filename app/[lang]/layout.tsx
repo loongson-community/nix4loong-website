@@ -3,8 +3,9 @@ import Script from 'next/script'
 import { Footer, LastUpdated, Layout, Navbar } from 'nextra-theme-docs'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
-import icon from './icon.svg'
-import './globals.css'
+import { mustAccessI18N } from '../_utils/i18n'
+import icon from '../icon.svg'
+import '../globals.css'
 
 export const metadata = {}
 
@@ -51,12 +52,16 @@ const FOOTER = (
 
 interface RootLayoutProps {
   children: React.ReactNode
+  params: Promise<{ lang: string }>
 }
 
-export default async function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children, params }: RootLayoutProps) {
+  const { lang } = await params
+  const i18n = mustAccessI18N(lang)
+
   return (
     <html
-      lang="zh"
+      lang={lang}
       dir="ltr"
       suppressHydrationWarning
     >
@@ -69,7 +74,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       </Head>
       <body className="overscroll-y-none">
         <Layout
-          pageMap={await getPageMap()}
+          pageMap={await getPageMap(`/${lang}`)}
           navbar={NAVBAR}
           footer={FOOTER}
           editLink={null}
@@ -77,17 +82,21 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           search={null}
           lastUpdated={(
             <LastUpdated>
-              最近更新于
+              {i18n['lastUpdated.text']}
             </LastUpdated>
           )}
+          i18n={[
+            { locale: 'en', name: 'English' },
+            { locale: 'zh', name: '中文' },
+          ]}
           toc={{
-            title: '目录',
-            backToTop: '回到顶部',
+            title: i18n['toc.title'],
+            backToTop: i18n['toc.backToTop'],
           }}
           themeSwitch={{
-            dark: '黑暗模式',
-            light: '明亮模式',
-            system: '跟随系统',
+            dark: i18n['themeSwitch.dark'],
+            light: i18n['themeSwitch.light'],
+            system: i18n['themeSwitch.system'],
           }}
           docsRepositoryBase="https://github.com/loongson-community/nix4loong-website"
         >
