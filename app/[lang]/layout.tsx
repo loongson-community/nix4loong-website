@@ -32,7 +32,7 @@ const FOOTER = (
       >
         鄂 ICP 备 2022017735 号-11
       </a>
-      <div>
+      <div className="text-right">
         <a
           target="_blank"
           className="hover:underline underline-offset-4 decoration-dotted"
