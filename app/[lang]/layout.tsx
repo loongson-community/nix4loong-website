@@ -67,9 +67,10 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
     >
       <Head>
         <Script
-          src="https://app.rybbit.io/api/script.js"
-          data-site-id="832"
+          data-site-id="1"
+          data-web-vitals="true"
           strategy="afterInteractive"
+          src="https://insights.seele.gg/api/script.js"
         />
       </Head>
       <body className="overscroll-y-none">
