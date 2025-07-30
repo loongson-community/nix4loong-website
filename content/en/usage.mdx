@@ -1,1 +1,28 @@
-TODO
+import { Callout } from 'nextra/components'
+
+# Usage
+
+This guide assumes familiarity with Nix and NixOS. New users should first read the documentation in [Related Links](/en/links).
+
+## Binary Cache
+
+A **binary cache** stores and distributes pre-built packages in the Nix ecosystem. Instead of compiling locally, Nix downloads pre-built packages from binary caches, dramatically improving installation speed and saving compute resources. Each cache is cryptographically signed for security and integrity.
+
+Nix's official build services (like https://cache.nixos.org) only support `x86_64` and `aarch64` architectures, not LoongArch. We've built dedicated build services and binary caches for LoongArch, providing pre-built Nix installers, Nixpkgs packages, and NixOS images.
+
+Our binary cache is at `https://cache.nix4loong.cn` with public key `cache.nix4loong.cn-1:zmkwLihdSUyy6OFSVgvK3br0EaUEczLiJgDfvOmm3pA=`. We plan automatic redirection to geographically closest mirrors as more become available. Interested in contributing mirrors? See [Contributing](/en/contributing).
+
+<Callout type="info">
+Our Nix installer and NixOS images **automatically configure this binary cache** – no setup required. Nix will prioritize downloading pre-built packages for faster installations.
+</Callout>
+
+## Flakes and Nix Channels
+
+Many critical changes in [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs)'s `loong-master` branch await upstreaming, including `loongarch64-linux` support for Flakes. We recommend:
+
+- **Flakes**: Use `github:loongson-community/nixpkgs` for Nixpkgs
+- **Nix Channels**: Use `https://download.nix4loong.cn/nix-channels/loong-master`
+
+<Callout type="info">
+Our Nix installer and NixOS images come pre-configured with these settings.
+</Callout>

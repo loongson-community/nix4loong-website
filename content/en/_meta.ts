@@ -9,19 +9,19 @@ export default {
     },
   },
   installation: {
-    title: 'Installation Guide',
+    title: 'Installation',
     theme: {
       breadcrumb: false,
     },
   },
   usage: {
-    title: 'Usage Guide',
+    title: 'Usage',
     theme: {
       breadcrumb: false,
     },
   },
   contributing: {
-    title: 'Contributing Guide',
+    title: 'Contributing',
     theme: {
       breadcrumb: false,
     },

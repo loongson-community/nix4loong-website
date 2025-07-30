@@ -1,1 +1,92 @@
-TODO
+import { Cards } from 'nextra/components'
+import { DownloadIcon } from '../../app/_components/download-icon'
+import { HashIcon } from '../../app/_components/hash-icon'
+import { TrackedDownloadCard } from '../../app/_components/tracked-download-card'
+
+# Installation
+
+## System Requirements
+
+Nix4Loong requires your Loongson processor to meet *at minimum* the `-march=la64v1.0` features from the [Toolchain Conventions of the LoongArch™ Architecture](https://github.com/loongson/la-toolchain-conventions), including:
+
+- 64-bit LoongArch architecture
+- 64-bit floating-point unit (`fpu64`)
+- Loongson SIMD eXtension (`lsx`) support
+
+**Compatible processors include:** 3A5000, 3C5000 series, 3A6000, 3B6000 series, 3C6000 series, 2K3000, and others.
+
+**Incompatible processors include:** 2K0300 and MIPS-based Loongson processors like 3A4000.
+
+## Nix
+
+The Nix package manager runs on mainstream LoongArch Linux distributions like AOSC OS and Arch Linux for Loong64. Your system must use [new-world LoongArch](https://areweloongyet.com/docs/old-and-new-worlds/).
+
+We recommend using our modified Nix installer based on [NixOS/experimental-nix-installer](https://github.com/NixOS/experimental-nix-installer/). It automatically configures Nix to use our [binary cache](/en/usage), eliminating local package compilation. Use this script to download and run the installer with system checks:
+
+```bash copy
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.nix4loong.cn | sh -s -- install
+```
+
+Alternatively, you can manually download the Nix installer:
+
+```bash copy
+curl -sL -o nix-installer https://download.nix4loong.cn/nix-installer/latest/nix-installer-loongarch64-linux
+chmod +x nix-installer
+./nix-installer install
+```
+
+You can refer to the Nix4Loong [GitHub repository](https://github.com/darkyzhou/experimental-nix-installer/) and the [NixOS/experimental-nix-installer repository](https://github.com/NixOS/experimental-nix-installer/) for more usage help and additional information.
+
+## NixOS
+
+NixOS is a Linux distribution built on Nix. Unlike traditional distributions, NixOS manages your entire system – from kernel parameters to user environments – through Nix's declarative configuration. For NixOS installation, you need [new-world LoongArch](https://areweloongyet.com/docs/old-and-new-worlds/) compatibility and UEFI boot support. Most recent Loongson devices (including XA61201 motherboards) meet these requirements. We offer two installation images:
+
+### Graphical Installation Image
+
+The graphical image includes desktop applications and a graphical NixOS installer with multiple desktop environment options. It doubles as a Live CD for trying NixOS and Nix.
+
+<Cards>
+  <TrackedDownloadCard
+    icon={<DownloadIcon />}
+    title="Graphical Installation Image"
+    href="https://download.nix4loong.cn/nixos-images/loong-master/latest-nixos-graphical-loongarch64-linux.iso"
+    className="mt-2"
+    downloadType="graphical"
+    fileType="iso"
+  />
+  <TrackedDownloadCard
+    icon={<HashIcon />}
+    title="SHA-256"
+    href="https://download.nix4loong.cn/nixos-images/loong-master/latest-nixos-graphical-loongarch64-linux.iso.sha256"
+    className="mt-2"
+    downloadType="graphical"
+    fileType="sha256"
+  />
+</Cards>
+
+### Minimal Installation Image
+
+The minimal image has no graphical interface and smaller size, requiring command-line installation. See the [NixOS Installation Guide](https://nixos.wiki/wiki/NixOS_Installation_Guide).
+
+<Cards>
+  <TrackedDownloadCard
+    icon={<DownloadIcon />}
+    title="Minimal Installation Image"
+    href="https://download.nix4loong.cn/nixos-images/loong-master/latest-nixos-minimal-loongarch64-linux.iso"
+    className="mt-2"
+    downloadType="minimal"
+    fileType="iso"
+  />
+  <TrackedDownloadCard
+    icon={<HashIcon />}
+    title="SHA-256"
+    href="https://download.nix4loong.cn/nixos-images/loong-master/latest-nixos-minimal-loongarch64-linux.iso.sha256"
+    className="mt-2"
+    downloadType="minimal"
+    fileType="sha256"
+  />
+</Cards>
+
+## Feedback and Suggestions
+
+For installation issues or suggestions, see [Contributing](/en/contributing).

@@ -8,7 +8,7 @@ import { Callout } from 'nextra/components'
 
 在 Nix 生态中，**二进制缓存（binary cache）** 是一种用于存储和分发已构建软件包的服务。Nix 在安装或升级软件包时，会优先尝试从二进制缓存中下载已构建好的包，而不是在本地重新编译，这样可以大幅提升安装速度、节省本地算力和时间。每个二进制缓存都通过公钥进行签名校验，确保下载内容的安全性和完整性。
 
-由于 Nix 官方的构建服务（如 cache.nixos.org）目前仅支持 x86_64 和 aarch64 架构，尚未覆盖龙架构，因此我们为龙架构用户自建了专用的构建服务和二进制缓存，提供 Nix 安装程序、Nixpkgs 软件包、NixOS 安装镜像等预构建二进制。当前，我们的二进制缓存源站托管在 [NJU Mirror](https://mirrors.nju.edu.cn/nix4loong/)。
+由于 Nix 官方的构建服务（如 https://cache.nixos.org ）目前仅支持 `x86_64` 和 `aarch64` 架构，尚未覆盖龙架构，因此我们为龙架构用户自建了专用的构建服务和二进制缓存，提供 Nix 安装程序、Nixpkgs 软件包、NixOS 安装镜像等预构建二进制。
 
 Nix4Loong 的二进制缓存的 URL 为 `https://cache.nix4loong.cn`，公钥为 `cache.nix4loong.cn-1:zmkwLihdSUyy6OFSVgvK3br0EaUEczLiJgDfvOmm3pA=`。未来如有更多国内外镜像站支持，我们将配置自动跳转，确保用户访问该 URL 时能够优先连接到地理位置最近的镜像源。如果您对贡献镜像站感兴趣，欢迎阅读[贡献指南](./contributing)。
 

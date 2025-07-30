@@ -31,10 +31,12 @@ NixOS 是一个基于 Nix 包管理器的 Linux 发行版，采用[声明式配�
 
 - **完全自主**：不同于早期龙芯处理器使用 MIPS 指令集，龙架构是完全自主设计的指令集架构
 - **现代化设计**：32 位定长 RISC 指令集，支持 32 位和 64 位处理器
-- **兼容性支持**：通过硬件加速的二进制翻译技术，可高效运行 x86、ARM 等架构的程序
+- **兼容性支持**：通过硬件加速的二进制翻译技术，可高效运行 [x86](https://github.com/lat-opensource/lat)、[ARM](https://github.com/lat-opensource/lata) 等架构的程序
 - **产业应用**：已在嵌入式设备、桌面计算机、服务器等多个领域得到应用
 
-目前龙架构存在两套不兼容的软件体系，习惯上称为[「旧世界」和「新世界」](https://areweloongyet.com/docs/old-and-new-worlds/)：
+目前，龙架构的旗舰处理器是 3C6000 系列，其中 3C6000/S 型号配备 16 核 32 线程。龙芯中科[宣称](https://www.loongson.cn/news/show?id=757)其在 SPEC CPU 2017 基准测试中的性能达到了 2021 年发布的 [Intel Xeon Silver 4314](https://www.intel.com/content/www/us/en/products/sku/215269/intel-xeon-silver-4314-processor-24m-cache-2-40-ghz/specifications.html)（同为 16 核 32 线程）的水平。
+
+需要注意的是，当前龙架构存在两套彼此不兼容的软件生态，分别被称为[「旧世界」和「新世界」](https://areweloongyet.com/docs/old-and-new-worlds/)：
 
 - **旧世界**：最早在龙芯中科内部适配的、随着龙架构公开一并发布的软件生态，主要应用于麒麟、UOS 等商业发行版
 - **新世界**：龙芯中科与开源社区协作打造的开源软件生态，被 [Arch Linux for Loong64](https://loongarchlinux.lcpu.dev/)、[Gentoo](https://wiki.gentoo.org/wiki/Project:LoongArch)、[AOSC OS](https://aosc.io/) 等主流发行版采用
@@ -47,7 +49,7 @@ Nix4Loong 项目致力于实现以下目标：
 
 - 将 Nixpkgs 的海量软件包移植到龙架构平台，提供龙架构的 [NixOS 安装镜像](/zh/installation)
 - 提供龙架构的 Nixpkgs 软件包的[二进制缓存](/zh/usage)，免去本地构建带来的各种麻烦
-- 搭建桥梁，让 Nix 社区能够参与和贡献龙芯软件生态的发展
+- 搭建桥梁，让 Nix 社区能够参与和贡献龙架构软件生态的发展
 
 ## 当前进展
 
@@ -58,4 +60,8 @@ Nix4Loong 项目致力于实现以下目标：
 
 ## 关于名称和组织
 
-本项目的名称为 Nix4Loong，取自 Nix For LoongArch 之意，您也可使用全小写名称 nix4loong 来指代本项目。请勿将本项目与 [Loongnix](https://www.loongnix.cn/zh/) 混淆，后者为龙芯开源社区推出的 Linux 发行版。本项目由社区组织 [loongson-community](https://github.com/loongson-community/) 发起，请勿将本组织与龙芯中科的龙芯开源社区和[龙芯爱好者社区](https://www.loongbbs.cn/)等组织混淆。
+本项目的名称为 Nix4Loong，取自 Nix For LoongArch 之意，您也可使用全小写名称 nix4loong 来指代本项目。
+
+请勿将本项目与 [Loongnix](https://www.loongnix.cn/zh/) 混淆，后者为龙芯开源社区推出的 Linux 发行版。本项目由社区组织 [loongson-community](https://github.com/loongson-community/) 发起，请勿将本组织与龙芯中科的龙芯开源社区和[龙芯爱好者社区](https://www.loongbbs.cn/)等组织混淆。
+
+Nix4Loong 项目与龙芯中科官方无任何隶属或合作关系，完全由开源社区自发组织和维护。本项目的所有适配、开发和维护工作均由社区志愿者完成，欢迎任何个人或团体参与贡献。

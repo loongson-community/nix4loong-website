@@ -11,4 +11,57 @@ import logo from '../../app/icon.svg'
 
 # Nix4Loong
 
-TODO
+Nix4Loong is a community-driven project initiated by [loongson-community](https://github.com/loongson-community/), focused on bringing the NixOS Linux distribution and its package collection Nixpkgs to the new-world LoongArch architecture through comprehensive upstream integration.
+
+## About NixOS and Nixpkgs
+
+NixOS is a Linux distribution built on the Nix package manager with a [declarative configuration model](https://nixos.org). [Key features include](https://nixos.org/guides/how-nix-works/):
+
+- **Reproducibility**: Packages are built in isolated environments, ensuring reproducible builds with no undeclared dependencies
+- **Declarative configuration**: Your entire system configuration is described in a single file, making it easy to share and replicate
+- **Atomic upgrades and rollbacks**: System updates are atomic operations that can be easily rolled back to previous states
+- **Multi-version coexistence**: Install multiple versions of the same package simultaneously, eliminating "DLL hell" conflicts
+- **Pure functional package management**: All packages live in `/nix/store` with unique path identifiers for complete isolation
+
+[Nixpkgs](https://nixos.org) is the Nix ecosystem's package collection, containing [over 120,000 packages](https://nixos.org) – one of the world's largest package repositories. Unlike traditional distribution package managers, **Nix runs on all major Linux distributions and can install packages from Nixpkgs directly**, giving users access to an enormous selection of software.
+
+## About New-World LoongArch
+
+[LoongArch](https://zh.wikipedia.org/wiki/LoongArch) is an independent instruction set architecture first publicly released by Loongson Technology in August 2020. This entirely new RISC-based architecture features:
+
+- **Complete independence**: Unlike earlier Loongson processors that used MIPS, LoongArch is entirely self-designed
+- **Modern architecture**: 32-bit fixed-length RISC instruction set supporting both 32-bit and 64-bit processors
+- **Cross-platform compatibility**: Efficiently runs [x86](https://github.com/lat-opensource/lat) and [ARM](https://github.com/lat-opensource/lata) programs through hardware-accelerated binary translation
+- **Wide deployment**: Used across embedded devices, desktops, and servers
+
+Currently, the flagship LoongArch processor is the 3C6000 series, with the 3C6000/S model offering 16 cores and 32 threads. According to [Loongson Technology](https://www.loongson.cn/news/show?id=757), its performance in the SPEC CPU 2017 benchmark is claimed to match that of the [Intel Xeon Silver 4314](https://www.intel.com/content/www/us/en/products/sku/215269/intel-xeon-silver-4314-processor-24m-cache-2-40-ghz/specifications.html) (also 16 cores and 32 threads), released in 2021.
+
+An important aspect to understand about LoongArch is that it currently has two distinct and incompatible software ecosystems, known as ["old-world" and "new-world"](https://areweloongyet.com/docs/old-and-new-worlds/):
+
+- **Old-world**: The original ecosystem developed internally by Loongson Technology and released with LoongArch, mainly used in commercial distributions like Kylin and UOS
+- **New-world**: An open-source ecosystem developed collaboratively between Loongson Technology and the community, adopted by mainstream distributions including [Arch Linux for Loong64](https://loongarchlinux.lcpu.dev/), [Gentoo](https://wiki.gentoo.org/wiki/Project:LoongArch), and [AOSC OS](https://aosc.io/)
+
+New-world follows standard open-source development practices, with changes typically submitted upstream for better compatibility and maintainability. [Old-world is gradually being replaced by new-world](https://areweloongyet.com/docs/old-and-new-worlds/). Nix4Loong targets new-world LoongArch exclusively, ensuring our work aligns with international open-source standards and delivers the authentic NixOS and Nixpkgs experience to LoongArch users.
+
+## Project Goals
+
+Nix4Loong aims to:
+
+- Port Nixpkgs' extensive package collection to LoongArch and provide [NixOS installation images](/en/installation)
+- Offer [binary caches](/en/usage) for LoongArch packages, eliminating the need for local compilation
+- Connect the Nix community with LoongArch ecosystem development
+
+## Current Progress
+
+Nix4Loong is actively porting Nixpkgs packages to LoongArch, with many changes already merged upstream and functional NixOS installation images available. We aim to upstream all LoongArch adaptations before NixOS 25.11 (November 2025) while ensuring substantial package compatibility.
+
+- Get NixOS installation images: [Installation](/en/installation)
+- Join development efforts: [Contributing](/en/contributing)
+
+## About the Name and Organization
+
+The project name "Nix4Loong" comes from "Nix For LoongArch" (also written as "nix4loong"). Don't confuse this with [Loongnix](https://www.loongnix.cn/zh/), a separate Linux distribution from the Loongson open-source community.
+
+This project is initiated by [loongson-community](https://github.com/loongson-community/), which is separate from Loongson Technology's official open-source community and the [Loongson Enthusiast Community](https://www.loongbbs.cn/).
+
+Nix4Loong is an independent open-source project with no affiliation to Loongson Technology. All work is done by community volunteers, and we welcome contributions from individuals and organizations alike.

@@ -7,7 +7,33 @@ import { mustAccessI18N } from '../_utils/i18n'
 import icon from '../icon.svg'
 import '../globals.css'
 
-export const metadata = {}
+export const metadata = {
+  metadataBase: new URL('https://nix4loong.org'),
+  keywords: ['nix', 'nixos', 'nixpkgs', 'loongarch', '龙芯', '龙架构', 'loongson', 'linux', 'package manager', 'functional programming', 'declarative', 'reproducible'],
+  authors: [{ name: 'Nix4Loong Community' }],
+  creator: 'Nix4Loong Community',
+  publisher: 'Nix4Loong Community',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'zh_CN',
+    alternateLocale: ['en_US'],
+    siteName: 'Nix4Loong',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
+}
 
 const NAVBAR = (
   <Navbar

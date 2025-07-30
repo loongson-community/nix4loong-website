@@ -1,1 +1,21 @@
-TODO
+# Contributing
+
+Nix4Loong maintains the `loong-master` branch in [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs), based on the official Nixpkgs `master` branch. We use this approach because some modifications can't be upstreamed yet, while actively pushing all suitable changes upstream.
+
+## User Feedback
+
+With limited resources, many LoongArch-compatible packages in Nixpkgs haven't been thoroughly tested. If you encounter issues, please [create an Issue](https://github.com/loongson-community/nixpkgs/issues) in our repository. This includes packages that fail to build or run properly.
+
+## Contributing Work
+
+Many Nixpkgs packages don't yet build or run smoothly on LoongArch, and some use temporary build fixes that are hard to upstream. This creates commits in Nix4Loong that can't be upstreamed immediately.
+
+To contribute, fork the `loong-master` branch from [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs), make your changes with testing, and submit a PR. After review, we'll help upstream your contributions to [NixOS/nixpkgs](https://github.com/nixos/nixpkgs/).
+
+You can also help resolve [existing Issues](https://github.com/loongson-community/nixpkgs/issues) and problems in [loongson-community/discussions](https://github.com/loongson-community/discussions/issues).
+
+## Contributing Resources
+
+Our current Loongson hardware can't fully meet the build demands from frequent Nixpkgs changes. If you have spare Loongson devices and want to provide computational support, please [create an Issue](https://github.com/loongson-community/nixpkgs/issues) to contact us.
+
+We currently only have mirror services from [NJU Mirror](https://mirrors.nju.edu.cn/nix4loong/), which doesn't adequately serve global users. If you can provide mirror resources, please contact us through Issues.
