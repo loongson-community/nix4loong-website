@@ -29,8 +29,8 @@ NixOS is a Linux distribution built on the Nix package manager with a [declarati
 
 [LoongArch](https://zh.wikipedia.org/wiki/LoongArch) is an independent instruction set architecture first publicly released by Loongson Technology in August 2020. This entirely new RISC-based architecture features:
 
-- **Complete independence**: Unlike earlier Loongson processors that used MIPS, LoongArch is entirely self-designed
-- **Modern architecture**: 32-bit fixed-length RISC instruction set supporting both 32-bit and 64-bit processors
+- **Complete independence**: Completely self-designed instruction set architecture, abandoning the MIPS architecture used in earlier Loongson processors
+- **Modern architecture**: 32-bit fixed-length RISC instruction set, 32 general-purpose registers, 32 floating-point/vector registers
 - **Cross-platform compatibility**: Efficiently runs [x86](https://github.com/lat-opensource/lat) and [ARM](https://github.com/lat-opensource/lata) programs through hardware-accelerated binary translation
 - **Wide deployment**: Used across embedded devices, desktops, and servers
 
@@ -47,13 +47,14 @@ New-world follows standard open-source development practices, with changes typic
 
 Nix4Loong aims to:
 
-- Port Nixpkgs' extensive package collection to LoongArch and provide [NixOS installation images](/en/installation)
-- Offer [binary caches](/en/usage) for LoongArch packages, eliminating the need for local compilation
-- Connect the Nix community with LoongArch ecosystem development
+- Provide [NixOS installation images](/en/installation) for LoongArch
+- Ensure a certain proportion of Nixpkgs packages working on LoongArch
+- Offer and maintain [binary caches](/en/usage) for LoongArch Nixpkgs
+- Build bridges to enable the Nix community to participate in the development of the LoongArch ecosystem
 
 ## Current Progress
 
-Nix4Loong is actively porting Nixpkgs packages to LoongArch, with many changes already merged upstream and functional NixOS installation images available. We aim to upstream all LoongArch adaptations before NixOS 25.11 (November 2025) while ensuring substantial package compatibility.
+Nix4Loong is actively porting Nixpkgs packages to LoongArch, with many changes already merged upstream and functional NixOS installation images available. We aim to upstream all LoongArch adaptations before Nixpkgs 25.11 release (around November 2025) while ensuring substantial package compatibility.
 
 - Get NixOS installation images: [Installation](/en/installation)
 - Join development efforts: [Contributing](/en/contributing)

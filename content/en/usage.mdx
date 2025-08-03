@@ -4,6 +4,17 @@ import { Callout } from 'nextra/components'
 
 This guide assumes familiarity with Nix and NixOS. New users should first read the documentation in [Related Links](/en/links).
 
+## Flakes and Nix Channels
+
+Many critical changes in [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs)'s `loong-master` branch await upstreaming, including `loongarch64-linux` support for Flakes. We recommend:
+
+- **Flakes**: Use `github:loongson-community/nixpkgs` for Nixpkgs.
+- **Nix Channels**: Use `https://download.nix4loong.cn/nix-channels/loong-master`.
+
+<Callout type="info">
+Our Nix installer and NixOS images come pre-configured with these settings.
+</Callout>
+
 ## Binary Cache
 
 A **binary cache** stores and distributes pre-built packages in the Nix ecosystem. Instead of compiling locally, Nix downloads pre-built packages from binary caches, dramatically improving installation speed and saving compute resources. Each cache is cryptographically signed for security and integrity.
@@ -16,13 +27,8 @@ Our binary cache is at `https://cache.nix4loong.cn` with public key `cache.nix4l
 Our Nix installer and NixOS images **automatically configure this binary cache** – no setup required. Nix will prioritize downloading pre-built packages for faster installations.
 </Callout>
 
-## Flakes and Nix Channels
+Due to current computing and human resource constraints, the binary cache only includes a subset of Nixpkgs packages. You can view the complete list in `nixpkgs/flake.nix` of [Nix4Loong/hydra-jobs](https://github.com/Nix4Loong/hydra-jobs/blob/main/nixpkgs/flake.nix).
 
-Many critical changes in [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs)'s `loong-master` branch await upstreaming, including `loongarch64-linux` support for Flakes. We recommend:
-
-- **Flakes**: Use `github:loongson-community/nixpkgs` for Nixpkgs
-- **Nix Channels**: Use `https://download.nix4loong.cn/nix-channels/loong-master`
-
-<Callout type="info">
-Our Nix installer and NixOS images come pre-configured with these settings.
-</Callout>
+- For desktop environments, currently only GNOME and KDE Plasma 6 are pre-built.
+- For packages not on the list, you can still try building them yourself. Build success rates will gradually improve as the community continues its efforts.
+- To include more packages, please submit PRs to the above repository. Once merged, they will be automatically built on [hydra.nix4loong.cn](https://hydra.nix4loong.cn) and pushed to the cache.
