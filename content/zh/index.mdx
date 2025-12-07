@@ -54,7 +54,11 @@ Nix4Loong 项目致力于实现以下目标：
 
 ## 当前进展
 
-目前，Nix4Loong 项目正在积极推进 Nixpkgs 软件包的龙架构适配工作，向上游合入了大量修改，并已成功构建出可正常运行的 NixOS 的安装镜像。我们的目标是在 Nixpkgs 25.11 发布之前（约 2025 年 11 月），将适配龙架构的修改全部合并到上游，同时确保相当数量的软件包能够正常构建和运行。
+Nixpkgs 25.11 "Xantusia" 已于 2025 年 11 月 30 日发布。根据 [Release Notes](https://nixos.org/manual/nixpkgs/stable/release-notes#sec-nixpkgs-release-25.11)，龙架构原生编译的初步支持工作已经完成，更多改进正在准备中。
+
+根据 [Software Development and Build Convention for LoongArch™ Architectures](https://github.com/loongson/la-softdev-convention)，此版本将默认的 `march` 级别设置为 `la64v1.0`，覆盖了 3A5000 以及更新系列的桌面和服务器处理器，但不支持没有 LSX 扩展的平台，如 2K0300。您可以使用 `pkgsCross.loongarch64-linux-embedded` 为平台构建软件和系统。
+
+未来，我们将持续推进 Nixpkgs 各大软件包的适配工作，不断提升龙架构上可用软件包的数量和质量。
 
 - 若要获取针对龙架构的 NixOS 安装镜像，请阅读[安装指南](/zh/installation)
 - 若想参与 Nix4Loong 项目的开发工作，请阅读[贡献指南](/zh/contributing)

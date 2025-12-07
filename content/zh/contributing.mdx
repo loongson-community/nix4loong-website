@@ -1,6 +1,11 @@
 # 贡献指南
 
-目前，Nix4Loong 在 [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs) 仓库维护 `loong-master` 分支，该分支基于官方 Nixpkgs 仓库的 `master` 分支。之所以采用此方式，是因为存在部分暂时无法上游合并的修改，而所有可上游合并的更改我们都会积极推动至上游。
+Nix4Loong 在 [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs) 仓库中维护了以下分支，用于管理暂时无法向上游提交或尚未被上游合并的修改:
+
+- `loong-master`，基于 Nixpkgs 官方仓库的 `master` 分支
+- `loong-release-25.11`，基于 Nixpkgs 官方仓库的 `release-25.11` 分支
+
+这些分支包含了解决部分软件包问题的修改。我们推荐您使用这些分支，并欢迎您向我们提交改进。我们会协助您完成上游化工作，并持续推进现有修改的上游合并。
 
 ## 使用反馈
 
@@ -18,4 +23,4 @@
 
 Nix4Loong 现有的龙芯设备资源难以完全满足 Nixpkgs 频繁变更所带来的构建需求。如果您拥有可用的龙芯设备，并愿意为社区提供算力支持，欢迎通过[创建 Issue](https://github.com/loongson-community/nixpkgs/issues)与我们联系。
 
-Nix4Loong 目前仅由 [NJU Mirror](https://mirrors.nju.edu.cn/nix4loong/) 提供镜像服务，难以充分覆盖世界各地的用户，如果您拥有镜像资源并愿意提供支持，我们也欢迎您通过 Issue 联系我们。
+Nix4Loong 目前仅由少数几个镜像站提供镜像服务，难以充分覆盖世界各地的用户，如果您拥有镜像资源并愿意提供支持，我们也欢迎您通过 Issue 联系我们。

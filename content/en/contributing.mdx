@@ -1,6 +1,11 @@
 # Contributing
 
-Nix4Loong maintains the `loong-master` branch in [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs), based on the official Nixpkgs `master` branch. We use this approach because some modifications can't be upstreamed yet, while actively pushing all suitable changes upstream.
+Nix4Loong maintains the following branches in the [loongson-community/nixpkgs](https://github.com/loongson-community/nixpkgs) repository to manage modifications that cannot be upstreamed yet or are awaiting upstream acceptance:
+
+- `loong-master`, based on the official Nixpkgs `master` branch
+- `loong-release-25.11`, based on the official Nixpkgs `release-25.11` branch
+
+These branches contain fixes for certain package issues. We recommend using these branches and welcome your contributions. We'll assist you with the upstreaming process and continue actively pushing our existing modifications upstream.
 
 ## User Feedback
 
@@ -18,4 +23,4 @@ You can also help resolve [existing Issues](https://github.com/loongson-communit
 
 Our current Loongson hardware can't fully meet the build demands from frequent Nixpkgs changes. If you have spare Loongson devices and want to provide computational support, please [create an Issue](https://github.com/loongson-community/nixpkgs/issues) to contact us.
 
-We currently only have mirror services from [NJU Mirror](https://mirrors.nju.edu.cn/nix4loong/), which doesn't adequately serve global users. If you can provide mirror resources, please contact us through Issues.
+We currently only have mirror services from a few mirror sites, which doesn't adequately cover users worldwide. If you can provide mirror resources, please contact us through Issues.

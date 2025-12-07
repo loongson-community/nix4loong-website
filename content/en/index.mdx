@@ -54,7 +54,11 @@ Nix4Loong aims to:
 
 ## Current Progress
 
-Nix4Loong is actively porting Nixpkgs packages to LoongArch, with many changes already merged upstream and functional NixOS installation images available. We aim to upstream all LoongArch adaptations before Nixpkgs 25.11 release (around November 2025) while ensuring substantial package compatibility.
+Nixpkgs 25.11 "Xantusia" was released on November 30, 2025. According to the [Release Notes](https://nixos.org/manual/nixpkgs/stable/release-notes#sec-nixpkgs-release-25.11), initial support for native LoongArch compilation has been completed, with more improvements in progress.
+
+Following the [Software Development and Build Convention for LoongArch™ Architectures](https://github.com/loongson/la-softdev-convention), this release sets the default `march` level to `la64v1.0`, which covers the 3A5000 and newer desktop and server processor series, but does not support platforms without the LSX extension, such as the 2K0300. You can use `pkgsCross.loongarch64-linux-embedded` to build software and systems for these platforms.
+
+Moving forward, we will continue working on adapting more Nixpkgs packages, continuously improving both the quantity and quality of available packages on LoongArch.
 
 - Get NixOS installation images: [Installation](/en/installation)
 - Join development efforts: [Contributing](/en/contributing)
