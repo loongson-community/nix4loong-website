@@ -106,6 +106,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
           footer={FOOTER}
           editLink={null}
           feedback={{ content: null }}
+          copyPageButton={false}
           search={null}
           lastUpdated={(
             <LastUpdated>
