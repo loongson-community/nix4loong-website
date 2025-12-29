@@ -24,7 +24,7 @@ import { Callout } from 'nextra/components'
 Nix4Loong 的二进制缓存的 URL 为 `https://cache.nix4loong.cn`，公钥为 `cache.nix4loong.cn-1:zmkwLihdSUyy6OFSVgvK3br0EaUEczLiJgDfvOmm3pA=`。未来如有更多国内外镜像站支持，我们将配置自动跳转，确保用户访问该 URL 时能够优先连接到地理位置最近的镜像源。如果您对贡献镜像站感兴趣，欢迎阅读[贡献指南](./contributing)。
 
 <Callout type="info">
-类似地，如果您使用我们提供的 Nix 安装程序或 NixOS 镜像，**它们将会自动使用上述二进制缓存，不需要额外配置**。Nix 在安装软件包时，会优先从二进制缓存中下载已构建好的软件包。
+如果您使用我们提供的 Nix 安装程序或 NixOS 安装镜像，**它们将会自动使用上述二进制缓存，不需要额外配置**。Nix 在安装软件包时，会优先从二进制缓存中下载已构建好的软件包。
 </Callout>
 
 受限于当前算力与人力，二进制缓存仅收录了 Nixpkgs 中的部分软件包。您可在 [Nix4Loong/hydra-jobs](https://github.com/Nix4Loong/hydra-jobs/blob/main/nixpkgs/flake.nix) 的 `nixpkgs/flake.nix` 中查看完整列表。
@@ -32,3 +32,20 @@ Nix4Loong 的二进制缓存的 URL 为 `https://cache.nix4loong.cn`，公钥为
 - 对于桌面环境，目前仅预构建了 Gnome 与 KDE Plasma 6。
 - 对于未列入列表的软件包，您仍可尝试自行构建，随着社区的不断努力，构建成功率将逐步提升。
 - 如需收录更多软件包，欢迎向上述仓库提交 PR，合入后将在 [hydra.nix4loong.cn](https://hydra.nix4loong.cn) 自动构建并推送至缓存。
+
+
+## 内核补丁
+
+Linux 主线内核自 5.19 版本起支持新世界龙架构。为充分发挥硬件性能，建议使用最新版本内核。虽然龙架构的内核维护和新平台支持持续推送上游，但仍有部分补丁因各种原因尚未合并。我们从[龙芯爱好者社区](https://loongfans.cn/pages/sdk.html)和 [AOSC](https://github.com/AOSC-Dev/aosc-os-abbs) 收集了这些补丁，并通过 [nix-loongarch-kernel](https://github.com/Nix4Loong/nix-loongarch-kernel) Flake 提供包含补丁的最新内核。
+
+这些未上游化的补丁包括但不限于:
+
+- Motorcomm YT6801 网卡驱动
+- 龙芯 3 系列处理器的 HWMon 支持
+- PixArt PS/2 触摸板驱动
+- 传统固件启动支持和 AMD GPU 稳定性修复
+- 一些基于龙架构平台的笔记本的触控板支持
+
+<Callout type="info">
+如果您使用我们提供的 NixOS 安装镜像，**它会自动配置使用上述 Flake 提供的内核**。我们的二进制缓存也会提供该内核的预构建版本，无需本地编译。
+</Callout>

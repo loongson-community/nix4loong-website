@@ -24,7 +24,7 @@ Nix's official build services (like https://cache.nixos.org) only support `x86_6
 Our binary cache is at `https://cache.nix4loong.cn` with public key `cache.nix4loong.cn-1:zmkwLihdSUyy6OFSVgvK3br0EaUEczLiJgDfvOmm3pA=`. We plan automatic redirection to geographically closest mirrors as more become available. Interested in contributing mirrors? See [Contributing](/en/contributing).
 
 <Callout type="info">
-Our Nix installer and NixOS images **automatically configure this binary cache** – no setup required. Nix will prioritize downloading pre-built packages for faster installations.
+If you use our provided Nix installer or NixOS installation images, **they will automatically use the binary cache above – no additional configuration required**. Nix will prioritize downloading pre-built packages when installing software.
 </Callout>
 
 Due to current computing and human resource constraints, the binary cache only includes a subset of Nixpkgs packages. You can view the complete list in `nixpkgs/flake.nix` of [Nix4Loong/hydra-jobs](https://github.com/Nix4Loong/hydra-jobs/blob/main/nixpkgs/flake.nix).
@@ -32,3 +32,20 @@ Due to current computing and human resource constraints, the binary cache only i
 - For desktop environments, currently only GNOME and KDE Plasma 6 are pre-built.
 - For packages not on the list, you can still try building them yourself. Build success rates will gradually improve as the community continues its efforts.
 - To include more packages, please submit PRs to the above repository. Once merged, they will be automatically built on [hydra.nix4loong.cn](https://hydra.nix4loong.cn) and pushed to the cache.
+
+
+## Kernel Patches
+
+The Linux mainline kernel has supported the new-world LoongArch architecture since version 5.19. For optimal hardware performance, we recommend keeping your kernel up to date. While kernel maintenance and new platform support for LoongArch are continuously being pushed upstream, some patches have not yet been merged for various reasons. We have collected these patches from the [Loongson Hobbyists' Community](https://loongfans.cn/pages/sdk.html) and [AOSC](https://github.com/AOSC-Dev/aosc-os-abbs), and provide the latest kernel with these patches through the [nix-loongarch-kernel](https://github.com/Nix4Loong/nix-loongarch-kernel) Flake.
+
+These un-upstreamed patches include but are not limited to:
+
+- Motorcomm YT6801 NIC driver
+- HWMon support for Loongson 3 family processors
+- PixArt PS/2 touchpad driver
+- Legacy firmware boot support and AMD GPU stability fixes
+- Touchpad support for some LoongArch-based laptops
+
+<Callout type="info">
+If you use our provided NixOS installation images, **they will automatically configure to use the kernel provided by the above Flake**. Our binary cache also provides pre-built versions of this kernel, so no local compilation is needed.
+</Callout>
