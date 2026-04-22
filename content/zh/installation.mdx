@@ -89,6 +89,10 @@ NixOS 是一个基于 Nix 包管理器构建的 Linux 发行版。与传统的 L
   />
 </Cards>
 
+### 在已有系统上原地安装
+
+如果您不方便使用安装镜像（例如远程 VPS等环境），可使用 [nix4loong-infect](https://github.com/Nix4Loong/nix4loong-infect) 将一台正在运行的龙架构 Linux 主机（AOSC OS、Arch Linux for Loong64 等）**原地替换**为 NixOS。它是 [elitak/nixos-infect](https://github.com/elitak/nixos-infect) 的龙架构移植版本，默认使用 Nix4Loong 的 Nix 安装程序、Nix Channel 和二进制缓存。
+
 ## 反馈与建议
 
 如果您在安装过程中遇到任何问题，或对 Nix4Loong 有任何建议，欢迎阅读[贡献指南](./contributing)。

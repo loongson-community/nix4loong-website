@@ -91,6 +91,10 @@ The minimal image has no graphical interface and smaller size, requiring command
   />
 </Cards>
 
+### In-place Install on an Existing System
+
+If booting from an installation image is inconvenient (for example, on a remote VPS), you can use [nix4loong-infect](https://github.com/Nix4Loong/nix4loong-infect) to **convert a running LoongArch Linux host in place** (AOSC OS, Arch Linux for Loong64, etc.) into NixOS. It is a LoongArch port of [elitak/nixos-infect](https://github.com/elitak/nixos-infect), preconfigured to use the Nix4Loong installer, Nix channel, and binary cache.
+
 ## Feedback and Suggestions
 
 For installation issues or suggestions, see [Contributing](/en/contributing).
