@@ -56,7 +56,7 @@ const FOOTER = (
         href="https://beian.miit.gov.cn/"
         rel="noopener noreferrer"
       >
-        鄂 ICP 备 2022017735 号-11
+        鄂 ICP 备 2026029618 号-4
       </a>
       <div className="text-right">
         <a
