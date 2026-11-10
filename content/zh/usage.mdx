@@ -21,7 +21,26 @@ import { Callout } from 'nextra/components'
 
 由于 Nix 官方的构建服务（如 https://cache.nixos.org ）目前仅支持 `x86_64` 和 `aarch64` 架构，尚未覆盖龙架构，因此我们为龙架构用户自建了专用的构建服务和二进制缓存，提供 Nix 安装程序、Nixpkgs 软件包、NixOS 安装镜像等预构建二进制。
 
-Nix4Loong 的二进制缓存的 URL 为 `https://cache.nix4loong.cn`，公钥为 `cache.nix4loong.cn-1:zmkwLihdSUyy6OFSVgvK3br0EaUEczLiJgDfvOmm3pA=`。未来如有更多国内外镜像站支持，我们将配置自动跳转，确保用户访问该 URL 时能够优先连接到地理位置最近的镜像源。如果您对贡献镜像站感兴趣，欢迎阅读[贡献指南](./contributing)。
+Nix4Loong 的二进制缓存的 URL 为 `https://cache.nix4loong.cn`，公钥为 `cache.nix4loong.cn-2:ezZrinY0iBgG5wY+KJOATVPjtNQnQI3skCWrur4rnPk=`。未来如有更多国内外镜像站支持，我们将配置自动跳转，确保用户访问该 URL 时能够优先连接到地理位置最近的镜像源。如果您对贡献镜像站感兴趣，欢迎阅读[贡献指南](./contributing)。
+
+<Callout type="warning">
+**缓存签名公钥轮换通知（2026-11-10）**
+
+受近期上游 Hydra 路径穿越安全漏洞（[GHSA-rqvm-hhh5-vrx7](https://github.com/NixOS/hydra/security/advisories/GHSA-rqvm-hhh5-vrx7)）影响，原缓存签名密钥 `cache.nix4loong.cn-1` 存在泄露风险。我们已修补服务端漏洞并启用新密钥 `cache.nix4loong.cn-2`，存量全部软件包均已补充新签名。
+
+- **新公钥**：`cache.nix4loong.cn-2:ezZrinY0iBgG5wY+KJOATVPjtNQnQI3skCWrur4rnPk=`
+- **30 天过渡期**：即日起至 **2026 年 12 月 10 日**，新构建的软件包将同时附带 `-1` 与 `-2` 双签名；过渡期结束后将停止 `-1` 签名。2026 年 11 月 10 日起提供的 Nix 安装程序、NixOS 安装镜像及 `nix4loong-infect` 已默认内置新公钥，新安装用户无需额外操作。
+- **存量用户迁移步骤**：
+  1. **替换配置中的公钥并移除旧密钥 `-1`**：
+     - **NixOS 用户**：在配置中将 `cache.nix4loong.cn-1:...` 替换为 `cache.nix4loong.cn-2:ezZrinY0iBgG5wY+KJOATVPjtNQnQI3skCWrur4rnPk=`，然后执行 `sudo nixos-rebuild switch`。
+     - **其他发行版（独立 Nix）用户**：编辑 `/etc/nix/nix.custom.conf`（或 `/etc/nix/nix.conf`），将 `trusted-public-keys` 中的 `cache.nix4loong.cn-1:...` 替换为新公钥，然后执行 `sudo systemctl restart nix-daemon`。
+  2. **清理本地缓存（如遇签名报错）**：Nix 客户端默认缓存 `narinfo` 30 天。移除 `-1` 后若拉取近期查询过的包提示未受信任，可执行以下命令清理本地元数据缓存：
+     ```bash
+     rm -f ~/.cache/nix/binary-cache-v*.sqlite*
+     sudo sh -c 'rm -f /root/.cache/nix/binary-cache-v*.sqlite*'
+     sudo systemctl restart nix-daemon
+     ```
+</Callout>
 
 <Callout type="info">
 如果您使用我们提供的 Nix 安装程序或 NixOS 安装镜像，**它们将会自动使用上述二进制缓存，不需要额外配置**。Nix 在安装软件包时，会优先从二进制缓存中下载已构建好的软件包。

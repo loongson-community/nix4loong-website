@@ -21,7 +21,26 @@ A **binary cache** stores and distributes pre-built packages in the Nix ecosyste
 
 Nix's official build services (like https://cache.nixos.org) only support `x86_64` and `aarch64` architectures, not LoongArch. We've built dedicated build services and binary caches for LoongArch, providing pre-built Nix installers, Nixpkgs packages, and NixOS images.
 
-Our binary cache is at `https://cache.nix4loong.cn` with public key `cache.nix4loong.cn-1:zmkwLihdSUyy6OFSVgvK3br0EaUEczLiJgDfvOmm3pA=`. We plan automatic redirection to geographically closest mirrors as more become available. Interested in contributing mirrors? See [Contributing](/en/contributing).
+Our binary cache is at `https://cache.nix4loong.cn` with public key `cache.nix4loong.cn-2:ezZrinY0iBgG5wY+KJOATVPjtNQnQI3skCWrur4rnPk=`. We plan automatic redirection to geographically closest mirrors as more become available. Interested in contributing mirrors? See [Contributing](/en/contributing).
+
+<Callout type="warning">
+**Binary Cache Signing Key Rotation Notice (2026-11-10)**
+
+Due to a recent upstream Hydra path traversal vulnerability ([GHSA-rqvm-hhh5-vrx7](https://github.com/NixOS/hydra/security/advisories/GHSA-rqvm-hhh5-vrx7)), the previous signing key `cache.nix4loong.cn-1` is considered compromised. We have patched the server and rotated to a new signing key `cache.nix4loong.cn-2`. All existing packages in the cache have been re-signed with the new key.
+
+- **New Public Key**: `cache.nix4loong.cn-2:ezZrinY0iBgG5wY+KJOATVPjtNQnQI3skCWrur4rnPk=`
+- **30-Day Transition Period**: Until **December 10, 2026**, newly built packages will be dual-signed with both `-1` and `-2`. After the transition period, `-1` signatures will be discontinued. The Nix installer, NixOS images, and `nix4loong-infect` published on or after November 10, 2026 already use the new key by default.
+- **Migration Steps for Existing Users**:
+  1. **Replace the public key and remove the old `-1` key**:
+     - **NixOS**: Replace `cache.nix4loong.cn-1:...` with `cache.nix4loong.cn-2:ezZrinY0iBgG5wY+KJOATVPjtNQnQI3skCWrur4rnPk=` in your configuration and run `sudo nixos-rebuild switch`.
+     - **Standalone Nix**: Update `trusted-public-keys` in `/etc/nix/nix.custom.conf` (or `/etc/nix/nix.conf`) with the new key and run `sudo systemctl restart nix-daemon`.
+  2. **Clear local narinfo cache (if needed)**: Nix caches positive `narinfo` lookups for 30 days by default. If you see signature verification errors after removing `-1`, clear the local metadata cache:
+     ```bash
+     rm -f ~/.cache/nix/binary-cache-v*.sqlite*
+     sudo sh -c 'rm -f /root/.cache/nix/binary-cache-v*.sqlite*'
+     sudo systemctl restart nix-daemon
+     ```
+</Callout>
 
 <Callout type="info">
 If you use our provided Nix installer or NixOS installation images, **they will automatically use the binary cache above – no additional configuration required**. Nix will prioritize downloading pre-built packages when installing software.

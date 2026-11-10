@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Script from 'next/script'
 import { Footer, LastUpdated, Layout, Navbar } from 'nextra-theme-docs'
-import { Head } from 'nextra/components'
+import { Banner, Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import { mustAccessI18N } from '../_utils/i18n'
 import icon from '../icon.svg'
@@ -101,6 +101,13 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
       </Head>
       <body className="overscroll-y-none">
         <Layout
+          banner={(
+            <Banner storageKey="cache-key-rotation-202611">
+              <a href={i18n['banner.keyRotationHref']}>
+                {i18n['banner.keyRotation']}
+              </a>
+            </Banner>
+          )}
           pageMap={await getPageMap(`/${lang}`)}
           navbar={NAVBAR}
           footer={FOOTER}

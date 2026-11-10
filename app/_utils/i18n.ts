@@ -9,6 +9,8 @@ export const I18N = defineI18N({
     'themeSwitch.dark': 'Dark',
     'themeSwitch.light': 'Light',
     'themeSwitch.system': 'System',
+    'banner.keyRotation': 'Binary cache signing key has rotated to cache.nix4loong.cn-2. Existing users please update before 2026-12-10 →',
+    'banner.keyRotationHref': '/en/usage#binary-cache',
   },
   zh: {
     'not-found.submit-issue': '提交 Issue',
@@ -20,6 +22,8 @@ export const I18N = defineI18N({
     'themeSwitch.dark': '黑暗模式',
     'themeSwitch.light': '明亮模式',
     'themeSwitch.system': '跟随系统',
+    'banner.keyRotation': '二进制缓存签名公钥已轮换为 cache.nix4loong.cn-2，请存量用户在 2026-12-10 前更新配置 →',
+    'banner.keyRotationHref': '/zh/usage#二进制缓存',
   },
 })
 
